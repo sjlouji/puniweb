@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+        <meta charset="utf-8" />
+        <title>Register | Alina</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+        <link href="{% static '/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <link href="{% static '/css/app.min.css' %}" id="app-style" rel="stylesheet" type="text/css" />
+        <link href="{% static '/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+
+        <div class="account-pages my-5 pt-sm-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-5">
+                        <div class="card overflow-hidden" style="height: 520px" >
+                            <div class="" style="background:#a1b1fd;">
+                                <div class="row">
+                                    <div class="col-7">
+                                        <div class="text-primary p-4">
+                                            <h5 class="" style="color: #ffffff">Welcome !</h5>
+                                            <p style="color: #ffffff">SignUp to continue to Alina.</p>
+                                        </div>
+                                    </div>
+                                       <div class="col-5 align-self-end">
+                                        <img src="{% static '/images/profile-img.png' %}" alt="" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body pt-0"> 
+                                <div>
+                                    <a href="index.html">
+                                        <div class="avatar-md profile-user-wid mb-4">
+                                         
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="p-2">
+                                      <form method="post">
+                                        {% csrf_token %}
+                                        {% comment %} <div class="form-group">
+                                            {{ form.username.errors }}
+                                             <label for="{{ form.username.errors }}"></label>  
+                                            <label class="useremail" for="{{ form.username.id_for_label }}">Username:</label>
+                                            <input type="text" placeholder="Username" class="form-control" name="username" autofocus="" required id="id_username">                                        
+                                        </div>
+
+                                        <div class="form-group">
+                                            {{ form.password1.errors }}
+                                             <label for="{{ form.password.errors }}"></label>  
+                                            <label class="useremail" for="{{ form.password1.id_for_label }}">Password:</label>
+                                           <input class="form-control" id="id_password1" placeholder="Password" type="password" name="password1" required>
+                                        </div>
+
+                                          <div class="form-group">
+                                            {{ form.password2.errors }}
+                                             <label for="{{ form.password2.errors }}"></label>  
+                                            <label class="useremail" for="{{ form.password2.id_for_label }}">Password:</label>
+                                           <input class="form-control" id="id_password2" placeholder="Confirm Password" type="password" name="password2" required>
+                                        </div>  {% endcomment %}
+                                        {{ form.as_p }}
+                                        <button class="btn btn-primary btn-block waves-effect waves-light" type="submit">SignUp</button>
+                                     </form>
+                                </div>
+            
+                            </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <p>Already have an account ? <a href="{% url 'login' %}" class="font-weight-medium text-primary"> Login</a> </p>
+                            <p>© 2020 Alina.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

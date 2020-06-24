@@ -1,0 +1,72 @@
+{% extends 'index.html' %}
+{% block title%}
+    View Event
+{% endblock %}
+{% block content %}
+    {% load static %}
+    {% load tz %}
+        <div class="page-content">
+            <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <p class="mb-0 font-size-15">Punithargal / Blog</p>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item active"><a class="text-reset " href="{% url 'calendersaint' %}"> Todays Saint</a> / View Event</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title mb-4">Event Details</h4>
+                                    <div class="table-responsive">
+                                        <table class="table table-nowrap mb-0">
+                                            <tbody>
+                                                <tr>
+                                                    <th scope="row">Event Title :</th>
+                                                    <td>{{event1.title}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Start Date :</th>
+                                                    <td>{{event1.startDate}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">End Date :</th>
+                                                    <td>{{event1.endDate}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Video Url :</th>
+                                                    <td>{{event1.videoLink}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Create By :</th>
+                                                    <td>{{event1.user}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Created On :</th>
+                                                    <td>{{event1.create_on}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </dvi>
+                        </div>
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title mb-4">Content</h4>
+                                    <p style="white-space: pre-line">
+                                        {{event1.transcript}}
+                                    </p>
+                                </div>
+                            </dvi>
+                    </div>
+            </div>
+        </div>
+{% endblock content %}

@@ -1,0 +1,152 @@
+{% extends 'index.html' %}
+{% block title%}
+    Add Blog
+{% endblock %}
+{% block content %}
+    {% load static %}
+    {% load tz %}
+        <div class="page-content">
+            <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <p class="mb-0 font-size-15">Punithargal</p>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item active"><i class="bx bx-user-plus font-size-16 align-middle mr-2"></i><a class="text-reset " href="#"> Blog</a> / Add Blog</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- end page title -->
+                            <form class="needs-validation" id="createBlog" method="POST" novalidate>
+                                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+        
+                                        <h4 class="card-title">Blog</h4>
+                                        <p class="card-title-desc">Fill all information below</p>
+        
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="productTitle">Title</label>
+                                                        <input id="productTitle" name="productTitle" type="text" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="slug">Slug</label>
+                                                        <input id="slug" name="slug" type="text" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="keyword">Keyword</label>
+                                                        <input id="keyword" name="keyword" type="text" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Status</label>
+        
+                                                        <select class="select2 form-control select2-multiple" id="status" name="status" style="width: 100%" data-placeholder="Choose ...">
+                                                            <option value="Drafted">Drafted</option>
+                                                            <option value="Published">Published</option>
+                                                        </select>
+        
+                                                    </div>
+                                                </div>
+        
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="metadescription">Meta Description</label>
+                                                        <textarea class="form-control" id="metadescription" rows="5"></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="coverImage">CoverImage</label>
+                                                        <input id="coverImage" placeholder="Url" name="coverImage" type="url" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+        
+                                    </div>
+                                </div>
+                                <div class="card" style="100%">
+                                    <div class="card-body">
+        
+                                        <div class="card-body">
+                                            <h4 class="card-title">Content</h4>            
+                                                <textarea id="content" name="content" style="height:1000px; width: 100%"></textarea>
+                                        </div>
+                                     <button type="submit" style="float: right" class="btn btn-primary mr-1 waves-effect waves-light">Save Changes</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            </form>
+
+                        <!-- end row -->
+            </div>
+        </div>
+{% endblock content %}
+{% block scripts %}
+<script>
+ $(function() {
+
+  //Ajax code
+    $("form#createBlog").submit(function(e) {
+        e.preventDefault();
+        $('#formbut').prop('disabled', true);
+        var title = $('input[name="productTitle"]').val();
+        var slug = $('input[name="slug"]').val();
+        var keyword = $('input[name="keyword"]').val();
+        var status = $("#status option:selected").val();
+        var metadescription = $('#metadescription').val();
+        var coverimage = $('input[name="coverImage"]').val();
+        var content = $('#content').val();
+        console.log(title)
+        console.log(slug)
+        console.log(keyword)
+        console.log(status)
+        console.log(metadescription)
+        console.log(coverimage)
+        console.log(content)
+
+        if(title && slug && keyword && status && metadescription  && coverimage && content ){
+            $.ajax({
+                url: '{% url "createBlog" %}',
+                data: {
+                    'title': title,
+                    'slug': slug,
+                    'keyword': keyword,
+                    'metadescription' : metadescription,
+                    'coverimage' : coverimage,
+                    'content' : content,
+                    'status' : status,
+                },
+                dataType: 'json',
+                success: function (data) {
+                    swal(
+                    'Good job!',
+                    'Blog added successfully!',
+                    'success'
+                    )
+                    $('#formbut').prop('disabled', false);
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    $('#formbut').prop('disabled', false);
+                    console.log(xhr);
+                    swal("Blog Error", xhr.status, "error");
+                }
+            });
+        }
+        else{
+            e.preventDefault();
+            swal("Validation Error","All Fields are required","error")
+        }
+
+    });
+
+}); 
+</script>
+
+{% endblock %} 

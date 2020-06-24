@@ -1,0 +1,207 @@
+*{
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+@page { margin: 0px; }
+body { 
+    margin: 0px;
+    width: 1480px;
+}
+
+.master-certificate-container {
+    height: 440px;
+    display: table;
+    padding-bottom: 0;
+    padding-top: 0;
+    table-layout: fixed;
+    width: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.master-certificate-banner {
+    min-height: 440px;
+    background-size: cover;
+    background-position: 100% 100%;
+    background-image: url(https://storage.googleapis.com/sproboticworks/master/assets/images/marketing/certificate/banner/master-certificate-banner.png);
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 99;
+}
+.master-certificate-position {
+    display: table-cell;
+    float: none;
+    padding-bottom: 0;
+    padding-top: 0;
+    position: relative;
+    vertical-align: middle;
+    width: 100%;
+    text-align: center;
+    z-index: 99;
+}
+.master-certificate-position > img {
+    width: 30%;
+    filter: brightness(0) invert(1);
+    margin-top: -75px;
+    margin-bottom: 15px;
+}
+.master-content-container > .title {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 48px;
+    color: #d6a641;
+}
+
+.master-certificate-body {
+    text-align: center;
+    padding-top: 15px;
+}
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+.master-certificate-body .master-body-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0c447c;
+}
+.master-certificate-body .master-body-name {
+    color: #0c447c;
+    font-weight: bold;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+.master-certificate-body .master-body-name-border {
+    border-bottom: 2px solid #0c447c;
+    min-width: 250px;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.master-certificate-body .master-dob {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #0c447c;
+    font-size:20px; 
+}
+.master-certificate-body .master-body-desc {
+    color: #0c447c;
+    margin-bottom: 45px;
+    width: 90%;
+    margin: 0 auto;    
+    font-size:22px; 
+}
+.master-certificate-bg-over {
+    background-image: url(https://lh3.googleusercontent.com/-30rADW0YYFQ/XBoqWf8V47I/AAAAAAAADm4/--F8cX-EuLYN5p9YLVcYmXok9sczd3cBgCLcBGAs/s0/BG.png);
+    height: 100%;
+    background-size: cover;
+    background-position: 100% 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index:-10;
+}
+.master-certificate-white-over {
+    background: #fffc;
+    height: 100%;
+    background-size: cover;
+    background-position: 100% 100%;
+    left: 23px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: -15px;
+    width: 1300px;
+    z-index: 2;
+}
+.footer-certificate-container {
+    width: 100%;
+    display: flex;
+    padding-top: 40px;
+}
+.text-left {
+    text-align: left!important;
+}
+.footer-certificate-titles {
+    border-right: 1px solid #ccc;
+    text-align: right;
+    color: #0c447c;
+    font-weight: bold;
+    font-size: 15px;
+}
+.footer-certificate-details {
+    font-size: 15px;
+    text-align: left;
+}            
+.student-certificate-body > .completion-auth-sign {
+    vertical-align: bottom;
+    padding-top: 20px;
+}
+.completion-auth-sign > img {
+    width: 135px;
+}
+.completion-auth-sign > div {
+    width: 210px;
+    margin: 0 auto;
+    border-top: 2px solid #0c447c;
+    padding-top: 2px;
+    margin-top: 5px;
+    color: #0c447c;
+    font-weight: bold;
+}
+.skill-title {
+    margin-bottom: 10px;
+    border-bottom: 2px solid #0c447c;
+    color: #0c447c;
+    font-weight: bold;
+}
+.progress {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 1rem;
+    overflow: hidden;
+    font-size: .75rem;
+    background-color: #e9ecef;
+    border-radius: 0;
+}
+.progress-bar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    background-color: #007bff;
+    transition: width .6s ease;
+}
+.master-skill-point-title {
+    font-size: 13px;
+    margin-top: 6px;
+    margin-bottom: 3px;
+}
+.master-certificate-body .master-skill-point .bg-danger {
+    background-color: #ea3e5d !important;
+}
+.student-certificate-body {
+    text-align: center;
+    padding-top: 50px;
+    z-index: 9999;
+    position: relative;
+    padding-bottom: 50px;
+}              
+@media print{
+    @page {size: landscape}
+}

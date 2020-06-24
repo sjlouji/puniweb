@@ -1,0 +1,92 @@
+{
+  "name": "louji",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:8000",
+  "dependencies": {
+    "@fullcalendar/core": "^4.4.0",
+    "@fullcalendar/daygrid": "^4.4.0",
+    "@jfschmiechen/react-event-calendar": "^0.2.7",
+    "@material-ui/core": "^4.9.14",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.53",
+    "@stripe/react-stripe-js": "^1.1.2",
+    "@stripe/stripe-js": "^1.5.0",
+    "@syncfusion/ej2-react-schedule": "^18.1.54",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/globalize": "0.0.37",
+    "antd": "^4.2.5",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.5.0",
+    "globalize": "^1.5.0",
+    "history": "^4.10.1",
+    "material-ui-popup-state": "^1.5.4",
+    "moment": "^2.26.0",
+    "moment-timezone": "^0.5.31",
+    "node-sass": "^4.14.1",
+    "notistack": "^0.9.16",
+    "razorpay": "^2.0.6",
+    "react": "^16.13.1",
+    "react-alert": "^7.0.1",
+    "react-alert-template-basic": "^1.0.0",
+    "react-big-calendar": "^0.24.6",
+    "react-bootstrap": "^1.0.1",
+    "react-calendar": "^3.1.0",
+    "react-countdown": "^2.2.1",
+    "react-device-detect": "^1.12.1",
+    "react-dom": "^16.13.1",
+    "react-event-calendar": "^0.3.0",
+    "react-font-size-changer": "^0.2.0",
+    "react-infinite-scroll-component": "^5.0.4",
+    "react-infinite-scroller": "^1.2.4",
+    "react-lines-ellipsis": "^0.14.1",
+    "react-loading-skeleton": "^2.0.1",
+    "react-moment": "^0.9.7",
+    "react-player": "^2.1.0",
+    "react-pretty-number": "^1.1.1",
+    "react-pretty-numbers": "^3.0.0",
+    "react-redux": "^7.2.0",
+    "react-router": "^5.2.0",
+    "react-router-config": "^5.1.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "react-show-more-text": "^1.4.2",
+    "react-simple-infinite-loading": "^1.0.0",
+    "react-tackle-box": "^2.1.0",
+    "react-text-truncate": "^0.16.0",
+    "react-youtube": "^7.11.2",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-saga": "^1.1.3",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.88.2"
+  },
+  "scripts": {
+    "start": "PORT=8000 && react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "redux-devtools": "^3.5.0"
+  }
+}

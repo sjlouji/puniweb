@@ -1,0 +1,94 @@
+{% extends 'index.html' %}
+{% block title%}
+    Edit Blog
+{% endblock %}
+{% block content %}
+    {% load static %}
+    {% load tz %}
+        <div class="page-content">
+            <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <p class="mb-0 font-size-15">Punithargal / Blog</p>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item active"><a class="text-reset " href="{% url 'blog' %}"> Blog</a> / Edit Blog</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- end page title -->
+                    <form class="needs-validation" action="{% url 'editBlog' %}" id="createBlog" method="POST" novalidate>
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+        
+                                        <h4 class="card-title">Edit Blog</h4>
+        
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="productTitle">Title</label>
+                                                        <input id="productTitle" name="productTitle" value={{ blog1.title }} type="text" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input id="blogId" hidden name="blogId" value={{ blog1.id }} type="text" class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="slug">Slug</label>
+                                                        <input id="slug" name="slug" type="text" value={{ blog1.slug }} class="form-control">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="keyword">Keyword</label>
+                                                        <input id="keyword" name="keyword" type="text"  class="form-control" value={{ blog1.keywords }}>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label">Status</label>
+        
+                                                        <select class="select2 form-control select2-multiple" id="status" name="status" style="width: 100%" data-placeholder="Choose ...">
+                                                            <option value="Drafted" {% if blog1.status == 'Drafted' %}selected{% endif %}>Drafted</option>
+                                                            <option value="Published" {% if blog1.status == 'Published' %}selected{% endif %}>Published</option>
+                                                        </select>
+        
+                                                    </div>
+                                                </div>
+        
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="metadescription">Meta Description</label>
+                                                        <textarea class="form-control" id="metadescription" rows="5">{{ blog1.meta_description }}</textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="coverImage">CoverImage</label>
+                                                        <input id="coverImage" placeholder="Url" name="coverImage" value={{ blog1.coverImage }} type="url" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+        
+                                    </div>
+                                </div>
+                                <div class="card" style="100%">
+                                    <div class="card-body">
+        
+                                        <div class="card-body">
+                                            <h4 class="card-title">Content</h4>            
+                                                <textarea id="content" name="content" style="height:1000px; width: 100%" > {{blog1.content}} </textarea>
+                                        </div>
+                                     <button type="submit" style="float: right" class="btn btn-primary mr-1 waves-effect waves-light">Edit Changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            </form>
+
+                        <!-- end row -->
+            </div>
+        </div>
+{% endblock content %}
+{% block scripts %}
+
+{% endblock %} 

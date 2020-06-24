@@ -1,0 +1,116 @@
+{% extends 'index.html' %}
+{% block title%}
+    Add Quiz
+{% endblock %}
+{% block content %}
+    {% load static %}
+    {% load tz %}
+        <div class="page-content">
+            <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <p class="mb-0 font-size-15">Punithargal</p>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item active"><i class="bx bx-user-plus font-size-16 align-middle mr-2"></i><a class="text-reset " href="#"> Blog</a> / Add Blog</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- end page title -->
+                            <form class="needs-validation" id="createBlog" method="POST" novalidate>
+                            {% csrf_token %}
+                            <div class="row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                    
+                                                    <h4 class="card-title">Question </h4>
+                                                    <p class="card-title-desc">Question details</p>
+                                                    <form class="needs-validation" id="createBlog" method="POST" novalidate>
+                                                        {% csrf_token %}
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="question_name">Question</label>
+                                                                    <input id="question_name" name="question_name" type="text" class="form-control">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="mark">Mark</label>
+                                                                    <input id="mark" name="mark" type="text" class="form-control">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label">Multiple Select</label>
+                
+                                                                    <select class="select2 form-control select2-multiple" id="choicedata" name="choicedata" multiple="multiple" data-placeholder="Choose ..." size="4">
+                                                                        {% for val in choice %}
+                                                                            <option value="{{ val.id }}">{{ val.choices }}</option>
+                                                                        {% endfor%}
+                                                                    </select>
+                
+                                                                </div>
+                                                                <button class="btn btn-primary" style="float: right"  type="submit"><i class="dripicons-plus font-size-20 align-middle mr-2"></i>Add</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </form>
+
+                        <!-- end row -->
+            </div>
+        </div>
+{% endblock content %}
+{% block scripts %}
+<script>
+ $(function() {
+
+  //Ajax code
+    $("form#createBlog").submit(function(e) {
+        e.preventDefault();
+        $('#formbut').prop('disabled', true);
+        var question_name = $('input[name="question_name"]').val();
+        var mark = $('input[name="mark"]').val();
+        var choicestate = new Array();//storing the selected values inside an array
+        $('#choicedata option:selected').each(function(i, selected) {
+            console.log(selected)
+            choicestate[i] = $(selected).val();
+        });
+        if(question_name && mark && choicestate ){
+            $.ajax({
+                url: '{% url "addQuestionToTable" %}',
+                data: {
+                    'question_name': question_name,
+                    'mark': mark,
+                    'choicestate': choicestate,
+                },
+                dataType: 'json',
+                success: function (data) {
+                    swal(
+                    'Good job!',
+                    'Blog added successfully!',
+                    'success'
+                    )
+                    $('#formbut').prop('disabled', false);
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    $('#formbut').prop('disabled', false);
+                    console.log(xhr);
+                    swal("Blog Error", xhr.status, "error");
+                }
+            });
+        }
+        else{
+            e.preventDefault();
+            swal("Validation Error","All Fields are required","error")
+        }
+
+    });
+
+}); 
+</script>
+
+{% endblock %} 

@@ -1,0 +1,55 @@
+{% extends 'index.html' %}
+{% block title%}
+    Transcript
+{% endblock %}
+{% block content %}
+    {% load static %}
+    {% load tz %}
+        <div class="page-content">
+            <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <p class="mb-0 font-size-15">Punithargal / Youtube</p>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item active"><a class="text-reset " href="#"> Youtube </a> / Transcript</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- end page title -->
+                            <form class="needs-validation" action="{% url 'addoredittranscript'  %}" id="createBlog" method="POST" novalidate>
+                                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+        
+                                        <h4 class="card-title">Transcript</h4>
+                                        <p class="card-title-desc">Fill all information below</p>
+                                        <input hidden value={{ youtube.id }} id="idofyoutube" name="idofyoutube" />
+                                    </div>
+                                </div>
+                                <div class="card" style="100%">
+                                    <div class="card-body">
+        
+                                        <div class="card-body">
+                                            <h4 class="card-title">Transcript</h4>            
+                                                <textarea id="content" name="content"  style="height:400px; width: 100%">{{ youtube.transcript }}</textarea>
+                                        </div>
+                                     <button type="submit" style="float: right" class="btn btn-primary mr-1 waves-effect waves-light">Save Changes</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            </form>
+
+                        <!-- end row -->
+            </div>
+        </div>
+{% endblock content %}
+{% block scripts %}
+{% endblock %} 

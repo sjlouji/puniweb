@@ -1,0 +1,96 @@
+{% extends 'index.html' %}
+{% block title%}
+    Quiz
+{% endblock %}
+{% block content %}
+    {% load static %}
+    {% load mathfilters %}
+    {% load tz %}
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-flex align-items-center justify-content-between">
+                            
+                            <p class="mb-0 font-size-15"> Punithargal / Quiz</p>
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item active"><a class="text-reset " href="#">Choices</a></li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h4 class="card-title">Quiz</h4>
+                                        <p class="card-title-desc">
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <button type="button" class="btn btn-primary waves-effect waves-light" onclick="location.href='{% url 'addQuiz' %}'" style="float: right"><i class="dripicons-plus font-size-16 align-middle mr-2"></i>Add Choice</button>
+                                    </div>
+                                </div>
+                                <table id="user_list" class="table table-striped table-hover  table-hover dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                    <tr>
+                                        <th>Quiz Name</th>
+                                        <th>Description</th>
+                                        <th>Video</th>
+                                        <th>Time</th>
+                                        <th>Create On</th>
+                                        <th>Create by</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                <tbody>
+                                        {% for user in quiz  %}
+                                            <tr>
+                                                <td>{{ user.quiz_name }}</td>
+                                                <td style="">{{ user.description }}</td>
+                                                <td>{{ user.video_id.title }} - 
+                                                    {{ user.video_id.id }}
+                                                </td> 
+                                                <td>{{ user.time|div:60000|floatformat:0}} minutes</span></td>
+                                                <td>{{ user.created }} </td>
+                                                <td>{{ user.created_by.first_name }}  {{ user.created_by.last_name }} </td>
+                                                <td>
+                                                     <div class="dropdown">
+                                                            <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+                                                                <i class="mdi mdi-dots-horizontal font-size-18"></i>
+                                                            </a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="{% url 'viewQuiz' user.id%}">View Quiz</a>
+                                                                <a class="dropdown-item" href="{% url 'editQuiz' user.id%}">Edit Quiz</a>
+                                                                <a class="dropdown-item" href="{% url 'deleteQuiz' user.id %}">Delete Quiz</a>
+                                                            </div>
+                                                        </div>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}  
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+{% endblock content %}
+
+{% block scripts %}
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+        <script type = "text/javascript">
+            $(document).ready(function(){
+                 $('#user_list').DataTable({
+                             dom: 'Bfrtip',
+
+                 });
+            });
+        </script>
+{% endblock scripts %}

@@ -1,0 +1,100 @@
+{% extends 'index.html' %}
+{% block title%}
+    Edit Users
+{% endblock %}
+{% block content %}
+    {% load static %}
+    {% load tz %}
+        <div class="page-content">
+            <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <p class="mb-0 font-size-15">Punithargal / IAM and Admin</p>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item active"><a class="text-reset " href="{% url 'listusers' %}"> Users</a> / Edit User</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                  <div class="row">
+                            <div class="col-xl-4">
+                                <div class="card overflow-hidden">
+                                    <div class="card-body pt-0">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                            <div class="avatar-md profile-user-wid mb-4" style="margin-top:20px">
+                                                    <span class="avatar-title rounded-circle bg-soft-primary text-primary font-size-16">
+                                                        <p style="color: white;margin-top:15px">{{ userdetails.first_name|make_list|first|title }}<p>
+                                                    </span>
+                                                </div>
+                                                <h5 class="font-size-15 text-truncate">{{userdetails.first_name}}</h5>
+                                                <p class="text-muted mb-0 text-truncate">
+                                                {% if userdetails.is_superuser %}
+                                                    <td>Super Admin User</td>
+                                                {% elif userdetails.is_admin %}
+                                                    <td>Admin User</td>
+                                                {% elif userdetails.is_staff %}
+                                                    <td>Staff User</td>
+                                                {% else %}    
+                                                    <td>Unauthorized login</td>
+                                                {% endif %}
+                                                </p>
+                                            </div>
+
+                                        
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Personal Information</h4>
+
+                                        <div class="table-responsive">
+                                            <table class="table table-nowrap mb-0">
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row">Full Name :</th>
+                                                        <td>{{userdetails.first_name}}  {{ userdetails.last_name }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Login Type</th>
+                                                            {% if userdetails.is_superuser %}
+                                                                <td>Super Admin </td>
+                                                            {% elif userdetails.is_admin %}
+                                                                <td>Admin </td>
+                                                            {% elif userdetails.is_staff %}
+                                                                <td>Staff </td>
+                                                            {% else %}    
+                                                                <td>Unauthorized login</td>
+                                                            {% endif %}
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">E-mail :</th>
+                                                        <td>{{ userdetails.email }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Joining Date :</th>
+                                                        <td>{{ userdetails.date_joined }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Last Login :</th>
+                                                        <td>{{ userdetails.last_login }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end card -->
+
+                               
+                            </div>
+                        </div>
+            </div>
+        </div>
+{% endblock content %}

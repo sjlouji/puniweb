@@ -1,0 +1,122 @@
+{% extends 'index.html' %}
+{% block title%}
+    Add Event
+{% endblock %}
+{% block content %}
+    {% load static %}
+    {% load tz %}
+        <div class="page-content">
+            <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <p class="mb-0 font-size-15">Punithargal</p>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item active"><a class="text-reset" href="#"> Event</a> / Add Event</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- end page title -->
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title mb-4">Create a new Event</h4>
+                                        <form id="createEvent1" name="createEvent1">
+                                            <div class="form-group row mb-4">
+                                                <label for="eventName" class="col-form-label col-lg-2">Event Name</label>
+                                                <div class="col-lg-10">
+                                                    <input id="eventName" name="eventName" type="text" class="form-control" placeholder="Enter Event Name...">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-4">
+                                                <label for="videoUrl" class="col-form-label col-lg-2">Video Url</label>
+                                                <div class="col-lg-10">
+                                                    <input type="url" class="form-control" id="videoUrl" name="videoUrl"  placeholder="Video Url..."></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label class="col-form-label col-lg-2">Event Dates</label>
+                                                <div class="col-lg-10">
+                                                <input id="dateran" name="dateran" class="form-control" type="date"  id="example-date-input">
+
+                                                </div>
+                                            </div>
+                                            <div class="row mb-4">
+                                                <label class="col-form-label col-lg-2">Event Desc</label>
+                                                <div class="col-lg-10">
+
+                                                        <textarea class="form-control" id="description" name="description" placeholder="Description..." rows="5" style="height: 300px"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row justify-content-end">
+                                                <div class="col-lg-10">
+                                                    <button type="submit" id="createEvent" name="createEvent" class="btn btn-primary">Create Event</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+{% endblock content %}
+{% block scripts %}
+<script>
+ $(function() {
+
+  //Ajax code
+    $("form#createEvent1").submit(function(e) {
+        e.preventDefault();
+        $('#formbut').prop('disabled', true);
+        var eventName = $('input[name="eventName"]').val();
+        var videoUrl = $('input[name="videoUrl"]').val();
+        var description = $('#description').val();
+        var sdate = $('input[name="dateran"]').val();
+        console.log(eventName)
+        console.log(videoUrl)
+        console.log(description)
+        console.log(sdate)
+
+        if(eventName && videoUrl && description && sdate ){
+            $.ajax({
+                url: '{% url "createEvent" %}',
+                data: {
+                    'eventName': eventName,
+                    'videoUrl': videoUrl,
+                    'description': description,
+                    'sdate' : sdate,
+                    'edate' : sdate,
+                },
+                dataType: 'json',
+                success: function (data) {
+                    swal(
+                    'Good job!',
+                    'Event added successfully!',
+                    'success'
+                    )
+                    $('#formbut').prop('disabled', false);
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    $('#formbut').prop('disabled', false);
+                    console.log(xhr);
+                    swal("Event Error", xhr.status, "error");
+                }
+            });
+        }
+        else{
+            e.preventDefault();
+            swal("Validation Error","All Fields are required","error")
+        }
+
+    });
+
+}); 
+</script>
+
+{% endblock %} 

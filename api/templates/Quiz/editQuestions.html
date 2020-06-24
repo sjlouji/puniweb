@@ -1,0 +1,81 @@
+{% extends 'index.html' %}
+{% block title%}
+    Add Questions
+{% endblock %}
+{% block content %}
+    {% load static %}
+    {% load tz %}
+        <div class="page-content">
+            <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <p class="mb-0 font-size-15">Punithargal / Quiz</p>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item active"><a class="text-reset " href="#"> Quiz</a> / Edit Question</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- end page title -->
+                            {% csrf_token %}
+                            <div class="row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                    
+                                                    <h4 class="card-title">Question </h4>
+                                                    <p class="card-title-desc">Question details</p>
+                                                    <form class="needs-validation" action="{% url 'editChangeQuestions' %}" method="POST" novalidate>
+                                                        {% csrf_token %}
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="question_name">Question</label>
+                                                                    <input id="question_name" value={{ blog1.question }} name="question_name" type="text" class="form-control">
+                                                                    <input id="questionID" hidden value={{ blog1.id }} name="questionID" type="text" class="form-control">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="mark">Mark</label>
+                                                                    <input id="mark" name="mark" value={{ blog1.mark }} type="text" class="form-control">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label">Multiple Select</label>
+                
+                                                                    <select class="select2 form-control select2-multiple" id="choicedata" name="choicedata" multiple="multiple" data-placeholder="Choose ..." size="4">
+                                                                        {% for val in choice %}
+                                                                            {% for v in blog1.choices.all %}
+                                                                                    {% if val.id == v.id %}
+                                                                                        <option selected value="{{ val.id }}">{{ val.choices }}</option>
+                                                                                    {% endif %}
+                                                                            {% endfor%}
+                                                                        {% endfor%}
+                                                                        {% for val in choice %}
+                                                                            {% for v in blog1.choices.all %}
+                                                                                {% with nam as v.id %}
+                                                                                {% endwith %}
+                                                                            {% endfor%}
+                                                                                {% if not val.id == nam %}
+                                                                                    <option value="{{ val.id }}">{{ val.choices }}</option>
+                                                                                {% endif %}
+                                                                        {% endfor%}
+                                                                    </select>
+                
+                                                                </div>
+                                                                <button type="submit" class="btn btn-primary" style="float: right"  >Save</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                        <!-- end row -->
+            </div>
+        </div>
+{% endblock content %}
+{% block scripts %}
+
+{% endblock %} 

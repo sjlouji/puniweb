@@ -1,0 +1,94 @@
+{% extends 'index.html' %}
+{% block title%}
+    Todays Saint
+{% endblock %}
+{% block content %}
+    {% load static %}
+    {% load tz %}
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-flex align-items-center justify-content-between">
+                            
+                            <p class="mb-0 font-size-15">Punithargal</p>
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item active"><a class="text-reset ">Todays Saint</a></li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h4 class="card-title">Todays Saint</h4>
+                                        <p class="card-title-desc">
+                                        </p>
+                                    </div>
+                                    {% if user.admin %}
+                                    <div class="col-lg-6">
+                                        <button type="button" class="btn btn-primary waves-effect waves-light" onclick="location.href='{% url 'adduser' %}'" style="float: right"><i class="bx bx-user-plus font-size-16 align-middle mr-2"></i>Add a User</button>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <table id="user_list" class="table table-striped table-hover  table-hover dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Start Date</th>
+                                        <th>End Date</th>
+                                        <th>Created by</th>
+                                        <th>Create on</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                <tbody>
+                                        {% for user in cal  %}
+                                            <tr>
+                                                <td>{{ user.title }}</td>
+                                                <td>{{ user.startDate }}</td>
+                                                <td>{{ user.endDate }}</td>
+                                                <td>{{ user.user.first_name }}  {{ user.user.last_name }}</td>
+                                                <td>{{ user.create_on }}</td>
+                                                <td>
+                                                     <div class="dropdown">
+                                                            <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+                                                                <i class="mdi mdi-dots-horizontal font-size-18"></i>
+                                                            </a>
+                                                            <div class="dropdown-menu dropdown-menu-right">
+                                                                <a class="dropdown-item" href="{% url 'viewEvent' user.id %}">View Profile</a>
+                                                                <a class="dropdown-item" href="{% url 'editViewEvent' user.id %}">Edit Event</a>
+                                                                <a class="dropdown-item" href="{% url 'deleteEvent' user.id %}">Delete Event</a>
+                                                            </div>
+                                                        </div>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}  
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+{% endblock content %}
+{% block scripts %}
+        <script type = "text/javascript">
+            $(document).ready(function(){
+               
+                 $('#user_list').DataTable({
+                             dom: 'Bfrtip',
+          buttons: [
+                'copy', 'excel', 'pdf'
+            ]
+                 });
+            });
+        </script>
+{% endblock scripts %}

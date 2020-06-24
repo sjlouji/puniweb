@@ -1,0 +1,77 @@
+{% extends 'index.html' %}
+{% block title%}
+    Settings
+{% endblock %}
+{% block content %}
+    {% load static %}
+    {% load tz %}
+        <div class="page-content">
+            <div class="container-fluid">
+                <!-- start of BreadCrumbs-->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-flex align-items-center justify-content-between" style="float: right">
+                            
+                            <p class="mb-0 font-size-15">Alina</p>
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item active"><i class="bx bx-cog bx-spin"></i><a class="text-reset " href="{% url 'settings' %}"> Settings</a></li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end of BreadCrumbs -->
+                <div class="row">
+                        <div class="col-lg-12">
+                                <div class="card" style="height: 700px">
+                                    <div class="card-body">
+        
+                                        <h4 class="card-title">Settings</h4>
+                                        <p class="card-title-desc"></p>
+        
+                                        <!-- Nav tabs -->
+                                        <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active"  href="{% url 'editprofile' %}" >
+                                                    <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                                                    <span class="d-none d-sm-block">Profile</span> 
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link"  href="#profile1" >
+                                                    <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                                    <span class="d-none d-sm-block">Profile</span> 
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link"  href="#messages1" >
+                                                    <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                                                    <span class="d-none d-sm-block">Messages</span>   
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link"   href="{% url 'settings' %}" >
+                                                    <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                                    <span class="d-none d-sm-block">Settings</span>    
+                                                </a>
+                                            </li>
+                                        </ul>
+        
+                                        <!-- Tab panes -->
+                                        <div class="tab-content p-3 text-muted">
+                                            <div class="tab-pane active" id="home1" role="tabpanel">
+                                                
+                                            </div>
+                                        </div>
+        
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                <div>
+            </div>
+        </div>
+{% endblock content %}

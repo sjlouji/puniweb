@@ -1,0 +1,112 @@
+{% extends 'index.html' %}
+{% block title%}
+    View Youtube Video
+{% endblock %}
+{% block content %}
+    {% load static %}
+    {% load tz %}
+        <div class="page-content">
+            <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <p class="mb-0 font-size-15">Punithargal / Blog</p>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item active"><a class="text-reset" href="{% url 'youtube' %}"> Youtube</a> / View video</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title mb-4">Video Details</h4>
+                                    <div class="table-responsive">
+                                        <table  class="table table-nowrap mb-0">
+                                            <tbody >
+                                                <tr>
+                                                    <th scope="row">Description :</th>
+                                                    <td>{{youtube.title}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Video id :</th>
+                                                    <td>{{youtube.youtube_id}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Youtube etag :</th>
+                                                    <td>{{youtube.youtube_etag}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Kind :</th>
+                                                    <td>{{youtube.kind}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">PublishedAt :</th>
+                                                    <td>{{youtube.publishedAt}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">ChannelId :</th>
+                                                    <td>{{youtube.channelId}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Description :</th>
+                                                    <td>
+                                                    <p style="white-space: pre-line">
+                                                    {{youtube.description}}
+                                                    </p>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">ThumbnailsDefault :</th>
+                                                    <td>{{youtube.thumbnailsDefault}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">ChannelTitle :</th>
+                                                    <td>{{youtube.channelTitle}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">PlaylistId :</th>
+                                                    <td>{{youtube.playlistId}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">VideoId :</th>
+                                                    <td>{{youtube.videoId}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Stats id: :</th>
+                                                    <td>{{youtube.stats_id}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Stats etag :</th>
+                                                    <td>{{youtube.stats_etag}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Stats :</th>
+                                                    <td>{{youtube.viewCount}} views, {{youtube.likeCount}} likes, {{youtube.dislikeCount}} dislikes, {{youtube.favoriteCount}} favorites, {{youtube.commentCount}} comments</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                            </dvi>
+                            
+                        </div>
+                         <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title mb-4">Transcript</h4>
+                                    <p style="white-space: pre-line">
+                                        {{youtube.transcript}}
+                                    </p>
+                                </div>
+                            </dvi>
+                    </div>
+
+                    </div>
+            </div>
+        </div>
+{% endblock content %}

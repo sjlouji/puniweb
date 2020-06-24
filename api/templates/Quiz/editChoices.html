@@ -1,0 +1,63 @@
+{% extends 'index.html' %}
+{% block title%}
+    Edit Choice
+{% endblock %}
+{% block content %}
+    {% load static %}
+    {% load tz %}
+        <div class="page-content">
+            <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <p class="mb-0 font-size-15">Punithargal / Quiz</p>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item active"><a class="text-reset " href="#"> Quiz</a> / Edit Choice</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- end page title -->
+                            <form class="needs-validation" id="createBlog" action="{% url 'editChangeChoice' %}" method="POST" novalidate>
+                            {% csrf_token %}
+                            <div class="row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                    
+                                                    <h4 class="card-title">Choice </h4>
+                                                    <p class="card-title-desc">Choice details</p>
+                                                    <form class="needs-validation" id="createBlog" method="POST" novalidate>
+                                                        {% csrf_token %}
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="choice_name">Choice Name</label>
+                                                                    <input id="choice_name" value={{ blog1.choices }} name="choice_name" type="text" class="form-control">
+                                                                    <input id="choiceid" hidden value={{ blog1.id }} name="choiceid" type="text" class="form-control">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label">Answer</label>
+                                                                    <select id="answer" name="answer" class="form-control select2">
+                                                                        <option value="True" {% if blog1.answer == True %}selected{% endif %}>True</option>
+                                                                        <option value="False" {% if blog1.answer == False %}selected{% endif %}>False</option>
+                                                                    </select>
+                                                                </div>
+                                                                <button class="btn btn-primary" style="float: right"  type="submit"><i class="dripicons-plus font-size-20 align-middle mr-2"></i>Save Changes</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </form>
+
+                        <!-- end row -->
+            </div>
+        </div>
+{% endblock content %}
+{% block scripts %}
+
+{% endblock %} 

@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% block title%}
+    View Choice
+{% endblock %}
+{% block content %}
+    {% load static %}
+    {% load tz %}
+        <div class="page-content">
+            <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <p class="mb-0 font-size-15">Punithargal / Quiz</p>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item active"><a class="text-reset" href="{% url 'choice' %}"> Quiz</a> / View Choice</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title mb-4">Choice Details</h4>
+                                    <div class="table-responsive">
+                                        <table  class="table table-nowrap mb-0">
+                                            <tbody >
+                                                <tr>
+                                                    <th scope="row">Id :</th>
+                                                    <td>{{blog1.id}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Choice :</th>
+                                                    <td>{{blog1.choices}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Is Answer :</th>
+                                                    <td>{{blog1.answer}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th scope="row">Created by :</th>
+                                                    <td>{{blog1.created_by}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                
+                            </dvi>
+                            
+                        </div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+{% endblock content %}

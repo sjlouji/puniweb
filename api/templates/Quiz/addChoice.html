@@ -1,0 +1,107 @@
+{% extends 'index.html' %}
+{% block title%}
+    Add Quiz
+{% endblock %}
+{% block content %}
+    {% load static %}
+    {% load tz %}
+        <div class="page-content">
+            <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <p class="mb-0 font-size-15">Punithargal</p>
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item active"><i class="bx bx-user-plus font-size-16 align-middle mr-2"></i><a class="text-reset " href="#"> Blog</a> / Add Blog</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- end page title -->
+                            <form class="needs-validation" id="createBlog" method="POST" novalidate>
+                            {% csrf_token %}
+                            <div class="row">
+                                        <div class="col-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                    
+                                                    <h4 class="card-title">Choice </h4>
+                                                    <p class="card-title-desc">Choice details</p>
+                                                    <form class="needs-validation" id="createBlog" method="POST" novalidate>
+                                                        {% csrf_token %}
+                                                        <div class="row">
+                                                            <div class="col-sm-6">
+                                                                <div class="form-group">
+                                                                    <label for="choice_name">Choice Name</label>
+                                                                    <input id="choice_name" name="choice_name" type="text" class="form-control">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label class="control-label">Answer</label>
+                                                                    <select id="answer" name="answer" class="form-control select2">
+                                                                        <option value="True">True</option>
+                                                                        <option value="False">False</option>
+                                                                    </select>
+                                                                </div>
+                                                                <button class="btn btn-primary" style="float: right"  type="submit"><i class="dripicons-plus font-size-20 align-middle mr-2"></i>Add</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </form>
+
+                        <!-- end row -->
+            </div>
+        </div>
+{% endblock content %}
+{% block scripts %}
+<script>
+ $(function() {
+
+  //Ajax code
+    $("form#createBlog").submit(function(e) {
+        e.preventDefault();
+        $('#formbut').prop('disabled', true);
+        var name = $('input[name="choice_name"]').val();
+        var answer = $("#answer option:selected").val();
+        console.log(name)
+        console.log(answer)
+
+        if(name && answer ){
+            $.ajax({
+                url: '{% url "addChoiceToTable" %}',
+                data: {
+                    'name': name,
+                    'answer': answer,
+                },
+                dataType: 'json',
+                success: function (data) {
+                    $('#choice_name').val('');
+                    swal(
+                    'Good job!',
+                    'Choice added successfully!',
+                    'success'
+                    )
+                    $('#formbut').prop('disabled', false);
+                },
+                error: function(xhr, ajaxOptions, thrownError) {
+                    $('#formbut').prop('disabled', false);
+                    console.log(xhr);
+                    swal("Blog Error", xhr.status, "error");
+                }
+            });
+        }
+        else{
+            e.preventDefault();
+            swal("Validation Error","All Fields are required","error")
+        }
+
+    });
+
+}); 
+</script>
+
+{% endblock %} 
