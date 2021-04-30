@@ -42,7 +42,7 @@ pytz==2020.1
 razorpay==1.2.0
 requests==2.23.0
 requests-oauthlib==1.3.0
-rsa==4.0
+rsa==4.7
 schedule==0.6.0
 shortid==0.1.2
 shortuuid==1.0.1
