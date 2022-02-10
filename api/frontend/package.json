@@ -25,7 +25,7 @@
     "material-ui-popup-state": "^1.5.4",
     "moment": "^2.26.0",
     "moment-timezone": "^0.5.31",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "notistack": "^0.9.16",
     "razorpay": "^2.0.6",
     "react": "^16.13.1",
